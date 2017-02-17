@@ -6,7 +6,7 @@
 /*   By: jaylor <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/16 11:17:49 by jaylor            #+#    #+#             */
-/*   Updated: 2017/02/17 13:02:54 by jaylor           ###   ########.fr       */
+/*   Updated: 2017/02/17 13:41:15 by jaylor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,12 @@ int main()
 	server_address.sin_port = htons(9024);
 	server_address.sin_addr.s_addr = INADDR_ANY;
 
-	bind(ser_sock, (struct sockadd*)&server_address, sizeof(server_address));
+	bind(ser_sock, (struct sockaddr *) &server_address, sizeof(server_address));
 
 	listen(ser_sock, 5);
 	
 	int client_sock;
-	client_sock = accept(ser_socket, NULL, NULL);
+	client_sock = accept(ser_sock, NULL, NULL);
 	send(client_sock, ser_mes, sizeof(ser_mes), 0);
-	close(ser_sock);
 	return (0);
 }

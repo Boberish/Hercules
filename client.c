@@ -6,7 +6,7 @@
 /*   By: jaylor <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/17 12:57:31 by jaylor            #+#    #+#             */
-/*   Updated: 2017/02/17 13:02:57 by jaylor           ###   ########.fr       */
+/*   Updated: 2017/02/17 13:34:34 by jaylor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 int main()
 {
 	int network_socket;
-	network_socket = socket(AF_INET, SOCK_STERAM, 0);
+	network_socket = socket(AF_INET, SOCK_STREAM, 0);
 
 	struct sockaddr_in server_address;
 	server_address.sin_family = AF_INET;
@@ -28,7 +28,7 @@ int main()
 
 	int con_stat;
 
-	con_stat = connect(network_socket, (struct sockaddr*)&server_addres, sizeof(server_address));
+	con_stat = connect(network_socket, (struct sockaddr*)&server_address, sizeof(server_address));
 
 	if(con_stat == -1)
 		printf("errror connection");
@@ -36,5 +36,5 @@ int main()
 
 	recv(network_socket, &ser_res, sizeof(ser_res), 0);
 	printf("%s", ser_res);
-	close(sock);	
+	return (0);
 }
